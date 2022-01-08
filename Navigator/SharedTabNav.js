@@ -43,6 +43,24 @@ export default function SharedTabNav({ isLoggedIn }) {
         {() => <SharedStackNav screenName="Search" />}
       </Tab.Screen>
       <Tab.Screen
+        name="TabCamera"
+        listeners={({ navigation }) => {
+          return {
+            tabPress: (e) => {
+              e.preventDefault();
+              navigation.navigate("Upload");
+            },
+          };
+        }}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <TabIcon iconName={"camera"} color={color} focused={focused} />
+          ),
+        }}
+      >
+        {() => <SharedStackNav screenName="Camera" />}
+      </Tab.Screen>
+      <Tab.Screen
         name={isLoggedIn ? "LoggedInNav" : "LoggedOutNav"}
         component={isLoggedIn ? LoggedInNav : LoggedOutNav}
         options={{

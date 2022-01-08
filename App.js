@@ -7,10 +7,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { AppearanceProvider, useColorScheme } from "react-native-appearance";
 import { darkTheme, lightTheme } from "./theme";
 import { ThemeProvider } from "styled-components/native";
-import SharedTabNav from "./Navigator/SharedTabNav";
 import { ApolloProvider, useReactiveVar } from "@apollo/client";
 import client, { darkMode, isLoggedInVar, tokenVar } from "./apollo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import OuterStackNav from "./Navigator/OuterStackNav";
 
 export default function App() {
   const colorScheme = useColorScheme();
@@ -49,7 +49,7 @@ export default function App() {
       <AppearanceProvider>
         <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
           <NavigationContainer>
-            <SharedTabNav isLoggedIn={isLoggedIn} />
+            <OuterStackNav isLoggedIn={isLoggedIn} />
           </NavigationContainer>
         </ThemeProvider>
       </AppearanceProvider>

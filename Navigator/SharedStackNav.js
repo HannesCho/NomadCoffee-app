@@ -4,7 +4,7 @@ import Photo from "../screens/Photo";
 import Profile from "../screens/Profile";
 import Home from "../screens/Home";
 import Search from "../screens/Search";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 import Comments from "../screens/Comments";
 
 const Stack = createStackNavigator();
@@ -45,6 +45,24 @@ export default function SharedStackNav({ screenName }) {
         <Stack.Screen
           name={"Search"}
           component={Search}
+          options={{
+            headerTitle: () => (
+              <Image
+                style={{
+                  width: 120,
+                  height: 40,
+                }}
+                resizeMode="contain"
+                source={require("../assets/logo.png")}
+              />
+            ),
+          }}
+        />
+      ) : null}
+      {screenName === "Camera" ? (
+        <Stack.Screen
+          name={"Camera"}
+          component={View}
           options={{
             headerTitle: () => (
               <Image

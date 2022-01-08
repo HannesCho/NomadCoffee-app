@@ -10,6 +10,7 @@ import {
 import styled from "styled-components/native";
 import DismissKeyboard from "../components/DismissKeyboard";
 import { useForm } from "react-hook-form";
+import ScreenLayout from "../components/ScreenLayout";
 
 const SEARCH_SHOP = gql`
   query searchShops($keyword: String!) {
@@ -26,6 +27,7 @@ const MessageContainer = styled.View`
   align-items: center;
 `;
 const MessageText = styled.Text`
+  color: ${(props) => props.theme.fontColor};
   margin-top: 10px;
   font-weight: 600;
 `;
@@ -86,7 +88,7 @@ export default function Search({ navigation }) {
 
   return (
     <DismissKeyboard>
-      <View style={{ flex: 1 }}>
+      <ScreenLayout>
         {loading ? (
           <MessageContainer>
             <ActivityIndicator size="large" />
@@ -112,7 +114,7 @@ export default function Search({ navigation }) {
             />
           )
         ) : null}
-      </View>
+      </ScreenLayout>
     </DismissKeyboard>
   );
 }
